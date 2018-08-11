@@ -169,7 +169,7 @@ ListView를 사용하기 위해서는 data와 UI를 연결해주는 Adapter를 �
 ### 5. RecyclerView
 RecyclerView란 ListView가 향상되고 유연해진 것이다. 기존에 ListView로는 다양한 형태의 list를 표현하거나 costom ListView를 만드는데 한계가 있었으나 RecyclerView Widget으로 이러한 점을 보완할 수 있다.
 
-- **Adapter**
+- **Adapter**  
 기존에 ListView는 data에 따라 BaseAdapter, ArrayAdapter, CursorAdapter, SimpleAdapter 등으로 구분하여 사용했지만 RecyclerView는 Universal Adapter 하나만 사용하여 data를 처리할 수있다. 이를 위해선 3가지 interface를 구현해야한다.
 
  - onCreateViewHolder(ViewGroup parent,int viewType)
@@ -197,22 +197,107 @@ Navigation Drawer란 화면에 나타날 때 서랍을 여는 듯한 animation�
 DrawerLayout은 자신의 영역 안에 있는 자식 View가 Drawer와 같은 동작을 수행할 수 있도록 하는 Layout이다.
 
 ## 디자인 패턴이란 무엇인가?
-
+design pattern은 coding을 하는데에 있어서 일종의 약속과 같은 역할을 한다. 기존에 작성했던 코드를 수정하기 위해서는 구조를 다시 파악해야하고 이 과정에서 많은 시간을 필요로한다. 이러한 시간적 소모를 줄이기 위한 것이 패턴화이다. 즉, 프로젝트를 구조화 시킴으로서 다른 사람이 보더라도 바로 파악이 가능하게 하는 것이 design pattern이다.  
 ### MVC Pattern
+MVC란 Model, View, Controller의 합성어이다. 사용자가 Controller에게 요청을 보내면 Controller는 Model을 통해서 데이터를 가져오고 그 정보를 바탕으로 시각적인 표현을 담당하는 View를 제어해서 사용자에게 전달하게 된다.
+ - **각각의 역할**  
+Model : 백그라운드에서 동작하는 로직처리  
+View : 사용자가 보게 될 결과 화면을 출력  
+Controller : 사용자의 입력 처리와 흐름 제어를 담당  
 
-### MVP Pattern
-- 참고 : [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)
+- **특징**  
+MVC pattern은 Model, View, Controller의 세 영역으로 구분하여 영역 간의 결합도를 소화한 패턴이다. MVC 패턴의 가장 중요한 장점 중 하나는 비즈니스 logic과 presentation 로직이 분리되었다는 것이다. 즉, 디자이너와 개발자들의 영역이 분리됨으로써 서로 각자의 영역에 더 집중할 수 있다는 장점이 있다.
+
+
+### MVP Pattern https://www.slideshare.net/madvirus/mvp-63161829
+MVP란 Model View Presenter의 약자로 MVC pattern을 보완한 design pattern이다. 동작 방식은 Model과 View는 Presenter만 알고 있으면 서로 의존성이 없고 Android에 가장 많이 적용되는 desing pattern이다.
+
+  - **각각의 역할**  
+  Model : 백그라운드에서 동작하는 로직처리  
+  View : 사용자가 보게 될 결과 화면을 출력  
+  Presenter : 사용자의 입력 처리와 흐름 제어를 담당    
+
+
+ - **동작**  
+ 1. View로 부터 사용자의 입력  
+ 2. View -> Presenter로 작업 요청  
+ 3. Presenter -> Modle로 data 요청
+ 4. Model -> Presenter로 요청한 data 응답
+ 5. Presenter -> View로 data 응답
+ 6. View는 Presenter로부터 받은 data를 화면에 나타낸다.
 
 ## Open Source
 
 ### 오픈 소스 라이브러리란 무엇인가?
-
+오픈 소스 라이브러리란 공개된 소스코드를 말한다. 개인 또는 단체가 작성한 소스코드를 공개함으로서 다양한 사람들이 이를 보완하고 수정하여 완성도를 높여간다.
 ### Butterknife
+Butterknife란 Android의 대표적인 오픈 소스 라이브러리이다. Butterknife liberary를 사용하면 기존에 button을 구현하기 위해 작성해야했던 code 간소화하여 작성할 수 있다.
+ - **사용 방법**  
+  1. Gradle Setting
+  ```gradle
+  dependencies {
+  compile 'com.jakewharton:Butterknife:[version]'  
+  annotationProcessor 'com.jakewharton:Butterknife-compiler:[version]'  }
+  ```  
+  2. onCreate() 내에 code 추가  
+  ```  
+  ButterKnife.bind(this);
+  ```  
+  3. 기존에 findViewByld(viewID) 대신 @Bind keyword를 사용한다.  
+  ```
+  @Bind(R.id.tv_info) TextView tv_info;  
+  ```  
+  4. ButterKnife를 이용하여 button을 한 번에 처리하는 예  
+  ```
+  @OnClick({R.id.btn_method, R.id.btn_listener, R.id.btn_implements})   
+  void buttonEvents(View v) {   
+      //에빈트를 처리할 로직
+    }  
+  ```
 
 ### Okhttp3
+Okhttp3란 효율적인 HTTP 통신을 처리하기 위한 오픈 소스 프로젝트를 말한다.  
+ - **사용 방법**
+  1. Gradle 추가  
+  ```
+  compile 'com.squareup.okhttp3:okhttp:3.8.0'
+
+    ```  
+  2. Okhttp3 객체 생성  
+  ```  
+  RequestBody body = new FormBody.Builder()
+                        .add("Id", id)
+                        .build();  
+                        ```  
+  3. 객체를 요청할 목적지 설정  
+  ```  
+  Request request = new Request.Builder()
+                        .url(url)
+                        .post(body)
+                        .build();
+                       ```  
+  4. client에 요청  
+ ```  
+ client.newCall(request).enqueue(callback);  
+ ```
 
 ### Retrofit2
+Retrofit2란 API 통신을 위해 만들어진 liberary를 말한다. Retrofit2을 사용하면 server에 request를 보내고 xml 방식으로 파싱을 해야하는 불편함을 덜 수 있다.  
+ - **사용 방법**  
+  1. Gradle 추가  
+    ```Xml  
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'  
+    ```
+  2. AndroidManifest 파일에 내용 추가  
+  ```Xml  
+  <uses-permission android:name="android.permission.INTERNET" />  
+  ```  
+  3.   
+
 
 ## 난독화
-
-### Proguard
+Software 난독화란 Software의 Source Code를 난독화하여 사람 또는 분석 tool이 이해하거나 분석하기 힘들게 변환하는 것을 말한다.
+### Proguard  
+Proguard는 무료료 사용할 수 있는 난독화 tool이다. Proguard를 Source Code에 적용하면 변수의 이름을 의미없는 이름으로 짧게 바꿔 난독화를 해주는 것을 확인할 수 있다. 하지만 Open source liberary인 만큼 난독화는 되지만 낮은 수준의 난독화를 한다.  
+예) Proguard를 통해 난독화한 Java Code는 디컴파일을 통해 원래의 Source Code를 확인할 수 있음.
