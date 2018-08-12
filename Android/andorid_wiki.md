@@ -256,7 +256,7 @@ Butterknife란 Android의 대표적인 오픈 소스 라이브러리이다. Butt
   ```
 
 ### Okhttp3
-Okhttp3란 효율적인 HTTP 통신을 처리하기 위한 오픈 소스 프로젝트를 말한다.  
+Okhttp3란 효율적인 HTTP 통신을 처리하기 위한 오픈 소스 라이브러리이다 
  - **사용 방법**
   1. Gradle 추가  
   ```
@@ -299,5 +299,5 @@ Retrofit2란 API 통신을 위해 만들어진 liberary를 말한다. Retrofit2�
 ## 난독화
 Software 난독화란 Software의 Source Code를 난독화하여 사람 또는 분석 tool이 이해하거나 분석하기 힘들게 변환하는 것을 말한다.
 ### Proguard  
-Proguard는 무료료 사용할 수 있는 난독화 tool이다. Proguard를 Source Code에 적용하면 변수의 이름을 의미없는 이름으로 짧게 바꿔 난독화를 해주는 것을 확인할 수 있다. 하지만 Open source liberary인 만큼 난독화는 되지만 낮은 수준의 난독화를 한다.  
+Proguard는 무료료 사용할 수 있는 난독화 tool이다. Proguard를 Source Code에 적용하면 변수의 이름을 의미없는 이름으로 짧게 바꿔 난독화를 해주는 것을 확인할 수 있다. 하지만 Open source인 만큼 난독화는 되지만 낮은 수준의 난독화를 한다.  
 예) Proguard를 통해 난독화한 Java Code는 디컴파일을 통해 원래의 Source Code를 확인할 수 있음.
