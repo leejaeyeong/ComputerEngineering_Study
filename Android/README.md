@@ -71,8 +71,7 @@ Text View나 Button같이 View 중에서 컨드롤 역할을 하는 것을 **wid
 
 - **RadioButton**
   - 하나의 아이템이 선택될 경우 다른 아이템의 체크 상태를 해제 해야 하므로 RadioGroup안에 있는 RadioButton은 모두 같은 그룹으로 인식
-
-  ```xml
+ ```xml
   <RadioGroup
      android:layout_width="wrap_conten"
      android:layout_height="wrap_content"
