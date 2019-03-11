@@ -70,7 +70,7 @@ Text View나 Button같이 View 중에서 컨드롤 역할을 하는 것을 **wid
  ```
 
 - **RadioButton**
-  - 하나의 아이템이 선택될 경우 다른 아이템의 체크 상태를 해제 해야 하므로 **RadioGroup**안에 있는 **RadioButton**은 모두 같은 그룹으로 인식
+  - 하나의 아이템이 선택될 경우 다른 아이템의 체크 상태를 해제 해야 하므로 RadioGroup안에 있는 RadioButton은 모두 같은 그룹으로 인식
 
   ```xml
   <RadioGroup
@@ -86,17 +86,15 @@ Text View나 Button같이 View 중에서 컨드롤 역할을 하는 것을 **wid
      android:layout_height="wrap_content"
      android:text="선택2"/>
   </RadioGroup>
-```
+  ```
 
 - **EditText**
 
  - 안드로이드에서 특정한 문자열을 입력받고 싶을 때 사용
  - 입력을 받을 문자열 종류 (문자열, 숫자, 주소, 이메일)
-   - android:inputType
  - 어떤 내용을 입력해야하는지 힌트를 주기위할때
-   - android:hint="write the name"
 
-  ```xml
+ ```xml
  <EditText
  android:layout_width="match_parent"
  android:layout_height="wrap_content"
@@ -256,7 +254,7 @@ Butterknife란 Android의 대표적인 오픈 소스 라이브러리이다. Butt
   ```
 
 ### Okhttp3
-Okhttp3란 효율적인 HTTP 통신을 처리하기 위한 오픈 소스 라이브러리이다 
+Okhttp3란 효율적인 HTTP 통신을 처리하기 위한 오픈 소스 라이브러리이다
  - **사용 방법**
   1. Gradle 추가  
   ```
